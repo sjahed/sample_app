@@ -25,4 +25,11 @@ describe StaticPagesController do
   	  	  response.should be_success
 	  end
   end
+
+  describe "Get 'contact'" do
+  	  it "returns http success" do
+  	  	  get 'contact'
+  	  	  response.should be_success
+	  end
+  end
 end
