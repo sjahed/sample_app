@@ -1,1 +1,2 @@
-# Rails simple project to learn
+#Rails simple project to learn
+wanted to see changes from master
