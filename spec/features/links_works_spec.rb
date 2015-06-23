@@ -24,5 +24,10 @@ feature "Links on HOME Page works" do
 		click_link "Contact"
 		expect(page.current_url).to eql(contact_url)
 	end
+	
+	scenario 'Sign up link works' do
+		click_link 'Sign up'
+		expect(page.current_url).to eql(signup_url)
+	end
 end
 
