@@ -1,20 +1,25 @@
 require 'spec_helper'
 
-feature 'Create a user' do
+feature 'User validation' do
 	before do
 		visit '/'
 		click_link "Sign up now!"
 	end
-	
-	scenario 'Create a user' do
-		#fill_in "Name", with: "Steve"
-		#fill_in "Email", with: "Steve@example.com"
-		#fill_in "Password", with: "password"
-		#fill_in "Confirmation", with: "password"
-		#click_button "Create my account"
-		#expect(page).to have_content("User has been created.")
+
+	scenario 'Invalid data will not create a user' do
+		click_button "Create my account"
+		expect(page).to have_content("Error adding user.")
 	end
 
+	scenario 'Create a user' do
+		fill_in "Name", with: "Steve"
+		fill_in "Email", with: "Steve@example.com"
+		fill_in "Password", with: "password"
+		fill_in "Confirmation", with: "password"
+		click_button "Create my account"
+		expect(page).to have_content("User added successfully.")
+	end
+	
 	scenario "Should create a valid user" do
 		user = FactoryGirl.create(:user)
 		user.should be_valid
